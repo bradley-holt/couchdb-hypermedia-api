@@ -22,6 +22,17 @@ class minimal-centos-60 {
     require => Package["bigcouch"]
   }
 
+  package { "httpd":
+    ensure => "latest",
+  }
+
+  service { "httpd":
+    ensure => "running",
+    require => [
+      Package["httpd"],
+    ],
+  }
+
 }
 
 include minimal-centos-60
