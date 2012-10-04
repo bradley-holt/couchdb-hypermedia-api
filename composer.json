@@ -1,3 +1,6 @@
 {
+    "require": {
+        "doctrine/couchdb-odm": "dev-master"
+    },
     "minimum-stability": "dev"
 }
