@@ -19,13 +19,13 @@ class MigrateCouchDb extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // Get the CouchDB configuration settings
-        $couchConfig = include APPLICATION_ROOT . '/config/couch.php';
+        $couchDbConfig = include APPLICATION_ROOT . '/config/couchdb.php';
         // Create a CouchDB client
-        $couchDbClient = CouchDBClient::create($couchConfig);
+        $couchDbClient = CouchDBClient::create($couchDbConfig);
         // Create the database, if it does not yet exist
-        if (!in_array($couchConfig['dbname'], $couchDbClient->getAllDatabases())) {
-            $output->writeln('Creating database "' . $couchConfig['dbname'] . '"...');
-            $couchDbClient->createDatabase($couchConfig['dbname']);
+        if (!in_array($couchDbConfig['dbname'], $couchDbClient->getAllDatabases())) {
+            $output->writeln('Creating database "' . $couchDbConfig['dbname'] . '"...');
+            $couchDbClient->createDatabase($couchDbConfig['dbname']);
         }
         // Iterate through the _design directory
         $dir = new \DirectoryIterator(APPLICATION_ROOT . '/_design');
