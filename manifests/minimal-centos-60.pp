@@ -55,6 +55,16 @@ class minimal-centos-60 {
     notify => Service["httpd"],
   }
 
+  file { "/etc/php.ini":
+    require => Package["php54"],
+    ensure => "file",
+    owner => "root",
+    group => "root",
+    mode => "0644",
+    source => "/vagrant/manifests/etc/php.ini",
+    notify => Service["httpd"],
+  }
+
   package { "php54-devel":
     require => Package["php54"],
     ensure => "latest",
