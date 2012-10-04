@@ -85,6 +85,14 @@ class minimal-centos-60 {
     notify => Service["httpd"],
   }
 
+  package { "curl":
+    ensure => "latest",
+  }
+
+  package { "git":
+    ensure => "latest",
+  }
+
 }
 
 include minimal-centos-60
