@@ -46,6 +46,45 @@ class minimal-centos-60 {
     source => "http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/ius-release-1.0-10.ius.el6.noarch.rpm"
   }
 
+  package { "php54":
+    require => [
+      Package["ius-release"],
+      Package["httpd"],
+    ],
+    ensure => "latest",
+    notify => Service["httpd"],
+  }
+
+  package { "php54-devel":
+    require => Package["php54"],
+    ensure => "latest",
+    notify => Service["httpd"],
+  }
+ 
+  package { "php54-intl":
+    require => Package["php54"],
+    ensure => "latest",
+    notify => Service["httpd"],
+  }
+
+  package { "php54-pecl-apc":
+    require => Package["php54"],
+    ensure => "latest",
+    notify => Service["httpd"],
+  }
+
+  package { "php54-pecl-xdebug":
+    require => Package["php54"],
+    ensure => "latest",
+    notify => Service["httpd"],
+  }
+
+  package { "php54-xml":
+    require => Package["php54"],
+    ensure => "latest",
+    notify => Service["httpd"],
+  }
+
 }
 
 include minimal-centos-60
