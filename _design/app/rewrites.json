@@ -1,0 +1,55 @@
+[
+    {
+        "from": "/",
+        "to": "/_list/collections/collections",
+        "method": "GET"
+    },
+    {
+        "from": "/",
+        "to": "/_update/collection",
+        "method": "POST"
+    },
+    {
+        "from": "/:collection/",
+        "to": "/_list/items/items",
+        "method": "GET",
+        "query": {
+            "reduce": false,
+            "startkey": [":collection", 0],
+            "endkey": [":collection", 1]
+        }
+    },
+    {
+        "from": "/:collection",
+        "to": "/_update/collection/:collection",
+        "method": "PUT"
+    },
+    {
+        "from": "/:collection",
+        "to": "/_update/collection/:collection",
+        "method": "DELETE"
+    },
+    {
+        "from": "/:collection/",
+        "to": "/_update/item",
+        "method": "POST",
+        "query": {
+            "collection": ":collection"
+        }
+    },
+    {
+        "from": "/:collection/:item",
+        "to": "/_show/item/:item",
+        "method": "GET"
+    },
+    {
+        "from": "/:collection/:item",
+        "to": "/_update/item/:item",
+        "method": "PUT"
+    },
+    {
+        "from": "/:collection/:item",
+        "to": "/_update/item/:item",
+        "method": "DELETE"
+    }
+]
