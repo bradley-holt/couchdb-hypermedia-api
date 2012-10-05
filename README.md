@@ -1,5 +1,7 @@
 # CouchDB Hypermedia API
 
+[![Build Status](https://secure.travis-ci.org/bradley-holt/couchdb-hypermedia-api.png)](http://travis-ci.org/bradley-holt/couchdb-hypermedia-api)
+
 This is the source code for a proof of concept Hypermedia API built in CouchDB.
 
 ## Developing
