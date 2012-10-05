@@ -83,4 +83,36 @@ class CollectionTest extends TestCase
         $this->assertEquals(self::INITIAL_URI, $resource->_links->up->href);
         $this->assertEquals($postedResource->title, $resource->title);
     }
+
+    /**
+     * @depends testPostToInitialUri
+     */
+    public function testPutToCollectionUri()
+    {
+        $client = new Client(self::ROOT_URI, array(
+        	'dbname' => $this->testDbName,
+        ));
+        $postedResource = new \stdClass();
+        $postedResource->title = 'Sessions';
+        $request = $client->post(ltrim(self::INITIAL_URI, '/'), array(
+            'Content-Type'  => 'application/hal+json',
+            'Accept'        => 'application/hal+json',
+        ), json_encode($postedResource));
+        $postResponse = $request->send();
+        $putResource = json_decode((string) $postResponse->getBody());
+        $putResource->description = 'A collection of sessions.';
+        $request = $client->put(ltrim($putResource->_links->self->href, '/'), array(
+            'Content-Type'  => 'application/hal+json',
+            'Accept'        => 'application/hal+json',
+        ), json_encode($putResource));
+        $response = $request->send();
+        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertEquals($putResource->_links->self->href, (string) $response->getHeader('Location'));
+        $this->assertEquals('application/hal+json', (string) $response->getHeader('Content-Type'));
+        $this->assertEquals('Accept', (string) $response->getHeader('Vary'));
+        $resource = json_decode((string) $response->getBody());
+        $this->assertEquals($putResource->_links->self->href, $resource->_links->self->href);
+        $this->assertEquals(self::INITIAL_URI, $resource->_links->up->href);
+        $this->assertEquals($putResource->title, $resource->title);
+    }
 }
