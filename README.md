@@ -26,6 +26,11 @@ This application's dependencies are managed by [Composer](http://getcomposer.org
 Run the following command to install dependencies:  
 `./composer.phar install`
 
+## Testing
+
+The unit tests for this application can be run using the following command:  
+`vendor/bin/phpunit`
+
 ## Administering
 
 Administrative and maintainance tasks are available using the `admin.php` script. 
