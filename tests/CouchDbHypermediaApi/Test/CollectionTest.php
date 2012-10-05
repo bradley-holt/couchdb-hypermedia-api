@@ -115,4 +115,33 @@ class CollectionTest extends TestCase
         $this->assertEquals(self::INITIAL_URI, $resource->_links->up->href);
         $this->assertEquals($putResource->title, $resource->title);
     }
+
+    /**
+     * @depends testPostToInitialUri
+     */
+    public function testDeleteCollectionUri()
+    {
+        $client = new Client(self::ROOT_URI, array(
+        	'dbname' => $this->testDbName,
+        ));
+        $postedResource = new \stdClass();
+        $postedResource->title = 'Sessions';
+        $request = $client->post(ltrim(self::INITIAL_URI, '/'), array(
+            'Content-Type'  => 'application/hal+json',
+            'Accept'        => 'application/hal+json',
+        ), json_encode($postedResource));
+        $postResponse = $request->send();
+        $deleteResource = json_decode((string) $postResponse->getBody());
+        $request = $client->delete(ltrim($deleteResource->_links->self->href, '/'), array(
+            'Accept'        => 'application/hal+json',
+        ));
+        $deleteResponse = $request->send();
+        $this->assertEquals(201, $deleteResponse->getStatusCode());
+        $this->assertNull($deleteResponse->getHeader('Location'));
+        $this->assertEquals('application/hal+json', (string) $deleteResponse->getHeader('Content-Type'));
+        $this->assertEquals('Accept', (string) $deleteResponse->getHeader('Vary'));
+        $resource = json_decode((string) $deleteResponse->getBody());
+        $this->assertTrue($resource->ok);
+        //TODO: Test for 404 (once fixed)
+    }
 }
