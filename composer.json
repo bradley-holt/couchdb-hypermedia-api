@@ -1,5 +1,6 @@
 {
     "require": {
+       "guzzle/guzzle": "2.8.*",
        "cilex/cilex": "1.0.*",
        "doctrine/couchdb-odm": "dev-master"
     },
