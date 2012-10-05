@@ -4,6 +4,7 @@
        "doctrine/couchdb-odm": "dev-master"
     },
     "require-dev": {
+       "phpunit/phpunit": "3.7.*",
        "guzzle/guzzle": "2.8.*"
     },
     "minimum-stability": "dev",
