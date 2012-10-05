@@ -61,4 +61,26 @@ class CollectionTest extends TestCase
         $this->assertCount(0, $resource->_links->item);
         $this->assertEquals('Collections', $resource->title);
     }
+
+    public function testPostToInitialUri()
+    {
+        $client = new Client(self::ROOT_URI, array(
+        	'dbname' => $this->testDbName,
+        ));
+        $postedResource = new \stdClass();
+        $postedResource->title = 'Sessions';
+        $request = $client->post(ltrim(self::INITIAL_URI, '/'), array(
+            'Content-Type'  => 'application/hal+json',
+            'Accept'        => 'application/hal+json',
+        ), json_encode($postedResource));
+        $response = $request->send();
+        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertNotNull((string) $response->getHeader('Location'));
+        $this->assertEquals('application/hal+json', (string) $response->getHeader('Content-Type'));
+        $this->assertEquals('Accept', (string) $response->getHeader('Vary'));
+        $resource = json_decode((string) $response->getBody());
+        $this->assertNotNull($resource->_links->self->href);
+        $this->assertEquals(self::INITIAL_URI, $resource->_links->up->href);
+        $this->assertEquals($postedResource->title, $resource->title);
+    }
 }
