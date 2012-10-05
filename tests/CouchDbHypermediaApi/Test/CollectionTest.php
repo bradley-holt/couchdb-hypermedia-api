@@ -55,6 +55,7 @@ class CollectionTest extends TestCase
         $response = $request->send();
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('application/hal+json', (string) $response->getHeader('Content-Type'));
+        $this->assertEquals('Accept', (string) $response->getHeader('Vary'));
         $resource = json_decode((string) $response->getBody());
         $this->assertEquals(self::INITIAL_URI, $resource->_links->self->href);
         $this->assertCount(0, $resource->_links->item);
