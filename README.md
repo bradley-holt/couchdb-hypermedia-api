@@ -20,6 +20,12 @@ and [Vagrant](http://vagrantup.com/). To set up your own local development envir
 6. Change into the `/vagrant` directory:  
 `cd /vagrant`
 
+## Building
+
+This application's dependencies are managed by [Composer](http://getcomposer.org/). 
+Run the following command to install dependencies:  
+`./composer.phar install`
+
 ## Administering
 
 Administrative and maintainance tasks are available using the `admin.php` script. 
