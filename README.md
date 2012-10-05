@@ -29,7 +29,7 @@ Run the following command to install dependencies:
 ## Testing
 
 The unit tests for this application can be run using the following command:  
-`vendor/bin/phpunit`
+`./vendor/bin/phpunit`
 
 ## Administering
 
