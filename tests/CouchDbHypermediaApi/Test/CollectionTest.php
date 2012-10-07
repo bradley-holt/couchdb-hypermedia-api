@@ -105,7 +105,7 @@ class CollectionTest extends TestCase
         $collectionResource = json_decode((string) $response->getBody());
         $request = $client->get(ltrim($collectionResource->_links->self->href, '/'), array(
             'Accept'        => 'application/hal+json',
-        ), json_encode($postedCollectionResource));
+        ));
         $response = $request->send();
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('application/hal+json', (string) $response->getHeader('Content-Type'));
