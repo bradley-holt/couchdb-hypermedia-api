@@ -116,6 +116,9 @@ class CollectionTest extends TestCase
         $this->assertEquals($postedCollectionResource->title, $collectionItemsresource->title);
     }
 
+    /**
+     * @depends testPostToInitialUri
+     */
     public function testPutToCollectionUri()
     {
         $client = new Client(self::ROOT_URI, array(
