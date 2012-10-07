@@ -1,7 +1,16 @@
 function(doc, req) {
     if ("DELETE" == req.method) {
         doc._deleted = true;
-        return [doc, {}];
+        return [
+            doc,
+            {
+                "headers": {
+                    "Content-Type": "application/hal+json",
+                    "Vary": "Accept"
+                },
+                "body": toJSON({"ok": true}) + "\n"
+            }
+        ];
     }
     switch (req.headers["Content-Type"]) {
         case "application/hal+json":
