@@ -174,6 +174,11 @@ class CollectionTest extends TestCase
         $this->assertEquals('Accept', (string) $deleteResponse->getHeader('Vary'));
         $resource = json_decode((string) $deleteResponse->getBody());
         $this->assertTrue($resource->ok);
-        //TODO: Test for 404 (once fixed)
+        $request = $client->get(ltrim($deleteResource->_links->self->href, '/'), array(
+            'Accept'        => 'application/hal+json',
+        ));
+        $response = $request->send();
+        $resource = json_decode((string) $response->getBody());
+        $this->assertCount(0, get_object_vars($resource));
     }
 }
