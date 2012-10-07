@@ -10,46 +10,46 @@
         "method": "POST"
     },
     {
-        "from": "/:collection/",
+        "from": "/:id/",
         "to": "/_list/items/items",
         "method": "GET",
         "query": {
             "reduce": false,
-            "startkey": [":collection", 0],
-            "endkey": [":collection", 1]
+            "startkey": [":id", 0],
+            "endkey": [":id", 1]
         }
     },
     {
-        "from": "/:collection",
-        "to": "/_update/collection/:collection",
+        "from": "/:id",
+        "to": "/_update/collection/:id",
         "method": "PUT"
     },
     {
-        "from": "/:collection",
-        "to": "/_update/collection/:collection",
+        "from": "/:id",
+        "to": "/_update/collection/:id",
         "method": "DELETE"
     },
     {
-        "from": "/:collection/",
+        "from": "/:id/",
         "to": "/_update/item",
         "method": "POST",
         "query": {
-            "collection": ":collection"
+            "collection": ":id"
         }
     },
     {
-        "from": "/:collection/:item",
-        "to": "/_show/item/:item",
+        "from": "/:id/edit",
+        "to": "/_show/item/:id",
         "method": "GET"
     },
     {
-        "from": "/:collection/:item",
-        "to": "/_update/item/:item",
+        "from": "/:id/edit",
+        "to": "/_update/item/:id",
         "method": "PUT"
     },
     {
-        "from": "/:collection/:item",
-        "to": "/_update/item/:item",
+        "from": "/:id/edit",
+        "to": "/_update/item/:id",
         "method": "DELETE"
     }
 ]

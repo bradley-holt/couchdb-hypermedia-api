@@ -101,7 +101,7 @@ class ItemTest extends TestCase
         ), json_encode($postedItemResource));
         $response = $request->send();
         $itemResource = json_decode((string) $response->getBody());
-        $request = $client->get(ltrim($itemResource->_links->self->href, '/'), array(
+        $request = $client->get(ltrim($itemResource->_links->edit->href, '/'), array(
             'Accept'        => 'application/hal+json',
         ));
         $response = $request->send();
@@ -109,7 +109,7 @@ class ItemTest extends TestCase
         $this->assertEquals('application/hal+json', (string) $response->getHeader('Content-Type'));
         $this->assertEquals('Accept', (string) $response->getHeader('Vary'));
         $resource = json_decode((string) $response->getBody());
-        $this->assertEquals($itemResource->_links->self->href, $resource->_links->self->href);
+        $this->assertEquals($itemResource->_links->edit->href, $resource->_links->edit->href);
         $this->assertEquals($collectionResource->_links->self->href, $resource->_links->collection->href);
         $this->assertEquals($postedItemResource->title, $resource->title);
     }
@@ -144,7 +144,7 @@ relationships. This talk will explore patterns of modeling one-to-many and many-
 document database. These patterns include using an embedded JSON array, relating documents using identifiers, using a 
 list of keys, and using relationship documents.
 EOD;
-        $request = $client->put(ltrim($itemResource->_links->self->href, '/'), array(
+        $request = $client->put(ltrim($itemResource->_links->edit->href, '/'), array(
             'Content-Type'  => 'application/hal+json',
             'Accept'        => 'application/hal+json',
         ), json_encode($itemResource));
@@ -153,7 +153,7 @@ EOD;
         $this->assertEquals('application/hal+json', (string) $response->getHeader('Content-Type'));
         $this->assertEquals('Accept', (string) $response->getHeader('Vary'));
         $resource = json_decode((string) $response->getBody());
-        $this->assertEquals($itemResource->_links->self->href, $resource->_links->self->href);
+        $this->assertEquals($itemResource->_links->edit->href, $resource->_links->edit->href);
         $this->assertEquals($collectionResource->_links->self->href, $resource->_links->collection->href);
         $this->assertEquals($itemResource->title, $resource->title);
         $this->assertEquals($itemResource->description, $resource->description);
@@ -183,7 +183,7 @@ EOD;
         ), json_encode($postedItemResource));
         $response = $request->send();
         $deleteResource = json_decode((string) $response->getBody());
-        $request = $client->delete(ltrim($deleteResource->_links->self->href, '/'), array(
+        $request = $client->delete(ltrim($deleteResource->_links->edit->href, '/'), array(
             'Accept'        => 'application/hal+json',
         ));
         $deleteResponse = $request->send();
@@ -193,7 +193,7 @@ EOD;
         $this->assertEquals('Accept', (string) $deleteResponse->getHeader('Vary'));
         $resource = json_decode((string) $deleteResponse->getBody());
         $this->assertTrue($resource->ok);
-        $request = $client->get(ltrim($deleteResource->_links->self->href, '/'), array(
+        $request = $client->get(ltrim($deleteResource->_links->edit->href, '/'), array(
             'Accept'        => 'application/hal+json',
         ));
         $this->setExpectedException('\Guzzle\Http\Exception\ClientErrorResponseException');

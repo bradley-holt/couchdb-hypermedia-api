@@ -27,9 +27,9 @@ function(doc, req) {
                     updatedDoc._id = req.uuid;
                 }
             }
-            updatedDoc.is_collection = true;
             updatedDoc.resource._links = {
                 "self": { "href": "/" + updatedDoc._id + "/" },
+                "edit": { "href": "/" + updatedDoc._id + "/edit" },
                 "up": { "href": "/" }
             };
             return [

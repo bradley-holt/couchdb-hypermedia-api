@@ -1,5 +1,5 @@
 function(doc) {
-    if (doc.is_collection) {
+    if (!doc.collection) {
         emit(doc._id, doc.resource.title);
     }
 }
