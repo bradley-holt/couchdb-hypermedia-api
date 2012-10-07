@@ -19,7 +19,7 @@ function(head, req) {
                 });
             }
         }
-        send(toJSON(resource));
+        send(JSON.stringify(resource));
         send("\n");
     });
 }

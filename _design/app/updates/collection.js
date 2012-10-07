@@ -8,7 +8,7 @@ function(doc, req) {
                     "Content-Type": "application/hal+json",
                     "Vary": "Accept"
                 },
-                "body": toJSON({"ok": true}) + "\n"
+                "body": JSON.stringify({"ok": true}) + "\n"
             }
         ];
     }
@@ -40,7 +40,7 @@ function(doc, req) {
                         "Content-Type": "application/hal+json",
                         "Vary": "Accept"
                     },
-                    "body": toJSON(updatedDoc.resource) + "\n"
+                    "body": JSON.stringify(updatedDoc.resource) + "\n"
                 }
             ];
         default:
@@ -52,7 +52,7 @@ function(doc, req) {
                         "Content-Type": "text/plain;charset=utf-8",
                         "Vary": "Accept"
                     },
-                    "body": toJSON({"error":"unsupported_media_type","reason":"The media type sent is not supported."}) + "\n"
+                    "body": JSON.stringify({"error":"unsupported_media_type","reason":"The media type sent is not supported."}) + "\n"
                 }
             ];
     }

@@ -21,7 +21,7 @@ function(head, req) {
                 "title": row.value
             });
         }
-        send(toJSON(collections));
+        send(JSON.stringify(collections));
         send("\n");
     });
 }
