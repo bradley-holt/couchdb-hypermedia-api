@@ -62,6 +62,9 @@ class CollectionTest extends TestCase
         $this->assertEquals('Collections', $resource->title);
     }
 
+    /**
+     * @depends testGetInitialUri
+     */
     public function testPostToInitialUri()
     {
         $client = new Client(self::ROOT_URI, array(
