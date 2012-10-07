@@ -28,7 +28,7 @@ function(doc, req) {
                 }
             }
             updatedDoc.resource._links = {
-                "self": { "href": "/" + updatedDoc._id + "/" },
+                "self": { "href": "/" + updatedDoc._id },
                 "edit": { "href": "/" + updatedDoc._id + "/edit" },
                 "up": { "href": "/" }
             };

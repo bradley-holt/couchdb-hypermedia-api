@@ -10,7 +10,7 @@
         "method": "POST"
     },
     {
-        "from": "/:item/",
+        "from": "/:item",
         "to": "/_list/items/items",
         "method": "GET",
         "query": {
@@ -30,7 +30,7 @@
         "method": "DELETE"
     },
     {
-        "from": "/:item/",
+        "from": "/:item",
         "to": "/_update/item",
         "method": "POST",
         "query": {

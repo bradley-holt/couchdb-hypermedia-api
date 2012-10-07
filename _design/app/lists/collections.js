@@ -17,7 +17,7 @@ function(head, req) {
         var row;
         while (row = getRow()) {
             collections._links.item.push({
-                "href": "/" + row.key + "/",
+                "href": "/" + row.key,
                 "title": row.value
             });
         }

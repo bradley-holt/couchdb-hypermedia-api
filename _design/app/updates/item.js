@@ -31,9 +31,9 @@ function(doc, req) {
                 updatedDoc.collection = req.query.collection;
             }
             updatedDoc.resource._links = {
-                "self": { "href": "/" + updatedDoc._id + "/" },
+                "self": { "href": "/" + updatedDoc._id },
                 "edit": { "href": "/" + updatedDoc._id + "/edit" },
-                "collection": { "href": "/" + updatedDoc.collection + "/" }
+                "collection": { "href": "/" + updatedDoc.collection }
             };
             return [
                 updatedDoc,
