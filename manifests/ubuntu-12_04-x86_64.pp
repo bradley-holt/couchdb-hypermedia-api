@@ -33,6 +33,16 @@ class ubuntu-12_04-x86_64 {
     require => Exec["apt-get update"],
   }
 
+  file { "/etc/apache2/sites-available/default":
+    ensure => "file",
+    owner => "root",
+    group => "root",
+    mode => "0644",
+    source => "/vagrant/manifests/etc/apache2/sites-available/default",
+    notify => Service["apache2"],
+    require => Package["apache2"],
+  }
+
   service { "apache2":
     ensure => "running",
     require => [
