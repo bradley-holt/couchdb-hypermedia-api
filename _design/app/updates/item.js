@@ -38,7 +38,7 @@ function(doc, req) {
             if (updatedDoc.collection) {
                 updatedDoc.resource._links.collection = { "href": "/api/" + updatedDoc.collection };
             } else {
-                updatedDoc.resource._links.up = { "href": "/api/" };
+                updatedDoc.resource._links.up = { "href": "/api" };
             }
             return [
                 updatedDoc,

@@ -11,7 +11,7 @@ class ItemTest extends TestCase
 {
     const ROOT_URI = 'http://localhost:5984/{dbname}/_design/app/_rewrite/';
 
-    const INITIAL_URI = '/api/';
+    const INITIAL_URI = '/api';
 
     /**
      * @var string
