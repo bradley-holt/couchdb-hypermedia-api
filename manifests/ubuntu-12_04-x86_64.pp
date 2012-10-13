@@ -55,6 +55,12 @@ class ubuntu-12_04-x86_64 {
     require => Package["apache2"],
   }
 
+  exec { "a2enmod proxy_http":
+    command => "/usr/sbin/a2enmod proxy_http",
+    notify => Service["apache2"],
+    require => Exec["a2enmod proxy"],
+  }
+
   service { "apache2":
     ensure => "running",
     require => [
