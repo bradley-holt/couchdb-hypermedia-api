@@ -115,6 +115,14 @@ class ubuntu-12_04-x86_64 {
     require => Package["python-pip"],
   }
 
+  file { "/etc/hosts":
+    ensure => "file",
+    owner => "root",
+    group => "root",
+    mode => "0644",
+    source => "/vagrant/manifests/etc/hosts",
+  }
+
 }
 
 include ubuntu-12_04-x86_64
