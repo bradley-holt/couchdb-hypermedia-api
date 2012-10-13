@@ -24,7 +24,7 @@ and [Vagrant](http://vagrantup.com/). To set up your own local development envir
 
 This application's dependencies are managed by [Composer](http://getcomposer.org/). 
 Run the following command to install dependencies:  
-`./composer.phar install`
+`./composer.phar install --dev`
 
 ## Testing
 
