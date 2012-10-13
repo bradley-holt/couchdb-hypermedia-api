@@ -18,7 +18,7 @@ function(head, req) {
         while (row = getRow()) {
             collections._links.item.push({
                 "href": "/" + row.key,
-                "title": row.value
+                "title": row.value.title
             });
         }
         send(JSON.stringify(collections));
