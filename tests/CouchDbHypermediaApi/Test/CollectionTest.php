@@ -119,7 +119,7 @@ class CollectionTest extends TestCase
     /**
      * @depends testPostToInitialUri
      */
-    public function testPutToCollectionUri()
+    public function testPutToCollectionEditUri()
     {
         $client = new Client(self::ROOT_URI, array(
         	'dbname' => $this->testDbName,
@@ -151,7 +151,7 @@ class CollectionTest extends TestCase
     /**
      * @depends testPostToInitialUri
      */
-    public function testDeleteCollectionUri()
+    public function testDeleteCollectionEditUri()
     {
         $client = new Client(self::ROOT_URI, array(
         	'dbname' => $this->testDbName,

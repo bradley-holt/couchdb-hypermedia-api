@@ -80,7 +80,7 @@ class ItemTest extends TestCase
     /**
      * @depends testPostToCollectionUri
      */
-    public function testGetItemUri()
+    public function testGetItemEditUri()
     {
         $client = new Client(self::ROOT_URI, array(
         	'dbname' => $this->testDbName,
@@ -117,7 +117,7 @@ class ItemTest extends TestCase
     /**
      * @depends testPostToCollectionUri
      */
-    public function testPutToItemUri()
+    public function testPutToItemEditUri()
     {
         $client = new Client(self::ROOT_URI, array(
         	'dbname' => $this->testDbName,
@@ -162,7 +162,7 @@ EOD;
     /**
      * @depends testPostToCollectionUri
      */
-    public function testDeleteItemUri()
+    public function testDeleteItemEditUri()
     {
         $client = new Client(self::ROOT_URI, array(
         	'dbname' => $this->testDbName,
