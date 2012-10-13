@@ -15,7 +15,7 @@ function(head, req) {
                 resource._links.item = [];
             } else if (1 == row.key[1] && resource._links) {
                 resource._links.item.push({
-                    "href": "/" + row.id,
+                    "href": "/api/" + row.id,
                     "title": row.value.title
                 });
             }

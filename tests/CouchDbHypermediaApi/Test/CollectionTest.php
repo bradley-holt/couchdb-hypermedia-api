@@ -11,7 +11,7 @@ class CollectionTest extends TestCase
 {
     const ROOT_URI = 'http://localhost:5984/{dbname}/_design/app/_rewrite/';
 
-    const INITIAL_URI = '/';
+    const INITIAL_URI = '/api/';
 
     /**
      * @var string

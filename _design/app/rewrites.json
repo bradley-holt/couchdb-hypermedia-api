@@ -1,16 +1,16 @@
 [
     {
-        "from": "",
+        "from": "api",
         "to": "_list/collections/collections",
         "method": "GET"
     },
     {
-        "from": "",
+        "from": "api",
         "to": "_update/item",
         "method": "POST"
     },
     {
-        "from": ":item",
+        "from": "api/:item",
         "to": "_list/items/items",
         "method": "GET",
         "query": {
@@ -20,7 +20,7 @@
         }
     },
     {
-        "from": ":item",
+        "from": "api/:item",
         "to": "_update/item",
         "method": "POST",
         "query": {
@@ -28,17 +28,17 @@
         }
     },
     {
-        "from": ":item/edit",
+        "from": "api/:item/edit",
         "to": "_show/item/:item",
         "method": "GET"
     },
     {
-        "from": ":item/edit",
+        "from": "api/:item/edit",
         "to": "_update/item/:item",
         "method": "PUT"
     },
     {
-        "from": ":item/edit",
+        "from": "api/:item/edit",
         "to": "_update/item/:item",
         "method": "DELETE"
     }

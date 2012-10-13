@@ -9,7 +9,7 @@ function(head, req) {
         });
         var collections = {
             "_links": {
-                "self": { "href": "/" },
+                "self": { "href": "/api/" },
                 "item": []
             },
             "title": "Collections"
@@ -17,7 +17,7 @@ function(head, req) {
         var row;
         while (row = getRow()) {
             collections._links.item.push({
-                "href": "/" + row.key,
+                "href": "/api/" + row.key,
                 "title": row.value.title
             });
         }

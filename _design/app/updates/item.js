@@ -33,12 +33,12 @@ function(doc, req) {
             if (!updatedDoc.resource._links) {
                 updatedDoc.resource._links = {};
             }
-            updatedDoc.resource._links.self = { "href": "/" + updatedDoc._id };
-            updatedDoc.resource._links.edit = { "href": "/" + updatedDoc._id + "/edit" };
+            updatedDoc.resource._links.self = { "href": "/api/" + updatedDoc._id };
+            updatedDoc.resource._links.edit = { "href": "/api/" + updatedDoc._id + "/edit" };
             if (updatedDoc.collection) {
-                updatedDoc.resource._links.collection = { "href": "/" + updatedDoc.collection };
+                updatedDoc.resource._links.collection = { "href": "/api/" + updatedDoc.collection };
             } else {
-                updatedDoc.resource._links.up = { "href": "/" };
+                updatedDoc.resource._links.up = { "href": "/api/" };
             }
             return [
                 updatedDoc,
