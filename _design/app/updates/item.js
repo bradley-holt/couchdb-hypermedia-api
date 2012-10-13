@@ -30,11 +30,16 @@ function(doc, req) {
             if (req.query.collection) {
                 updatedDoc.collection = req.query.collection;
             }
-            updatedDoc.resource._links = {
-                "self": { "href": "/" + updatedDoc._id },
-                "edit": { "href": "/" + updatedDoc._id + "/edit" },
-                "collection": { "href": "/" + updatedDoc.collection }
-            };
+            if (!updatedDoc.resource._links) {
+                updatedDoc.resource._links = {};
+            }
+            updatedDoc.resource._links.self = { "href": "/" + updatedDoc._id };
+            updatedDoc.resource._links.edit = { "href": "/" + updatedDoc._id + "/edit" };
+            if (updatedDoc.collection) {
+                updatedDoc.resource._links.collection = { "href": "/" + updatedDoc.collection };
+            } else {
+                updatedDoc.resource._links.up = { "href": "/" };
+            }
             return [
                 updatedDoc,
                 {

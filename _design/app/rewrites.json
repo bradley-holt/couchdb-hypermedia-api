@@ -6,7 +6,7 @@
     },
     {
         "from": "",
-        "to": "_update/collection",
+        "to": "_update/item",
         "method": "POST"
     },
     {
@@ -21,12 +21,12 @@
     },
     {
         "from": ":item",
-        "to": "_update/collection/:item",
+        "to": "_update/item/:item",
         "method": "PUT"
     },
     {
         "from": ":item",
-        "to": "_update/collection/:item",
+        "to": "_update/item/:item",
         "method": "DELETE"
     },
     {
