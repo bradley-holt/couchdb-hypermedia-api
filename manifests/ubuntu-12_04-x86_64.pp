@@ -105,6 +105,16 @@ class ubuntu-12_04-x86_64 {
     require => Exec["apt-get update"],
   }
 
+  package { "python-pip":
+    ensure => "latest",
+    require => Exec["apt-get update"],
+  }
+
+  exec { "upgrade-httpie":
+    command => "/usr/bin/pip install --upgrade httpie",
+    require => Package["python-pip"],
+  }
+
 }
 
 include ubuntu-12_04-x86_64
