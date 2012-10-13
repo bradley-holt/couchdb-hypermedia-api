@@ -133,7 +133,7 @@ class CollectionTest extends TestCase
         $postResponse = $request->send();
         $putResource = json_decode((string) $postResponse->getBody());
         $putResource->description = 'A collection of sessions.';
-        $request = $client->put(ltrim($putResource->_links->self->href, '/'), array(
+        $request = $client->put(ltrim($putResource->_links->edit->href, '/'), array(
             'Content-Type'  => 'application/hal+json',
             'Accept'        => 'application/hal+json',
         ), json_encode($putResource));
@@ -164,7 +164,7 @@ class CollectionTest extends TestCase
         ), json_encode($postedResource));
         $postResponse = $request->send();
         $deleteResource = json_decode((string) $postResponse->getBody());
-        $request = $client->delete(ltrim($deleteResource->_links->self->href, '/'), array(
+        $request = $client->delete(ltrim($deleteResource->_links->edit->href, '/'), array(
             'Accept'        => 'application/hal+json',
         ));
         $deleteResponse = $request->send();

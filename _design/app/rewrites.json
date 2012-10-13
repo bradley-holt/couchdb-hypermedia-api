@@ -21,16 +21,6 @@
     },
     {
         "from": ":item",
-        "to": "_update/item/:item",
-        "method": "PUT"
-    },
-    {
-        "from": ":item",
-        "to": "_update/item/:item",
-        "method": "DELETE"
-    },
-    {
-        "from": ":item",
         "to": "_update/item",
         "method": "POST",
         "query": {
