@@ -43,6 +43,12 @@ class ubuntu-12_04-x86_64 {
     require => Package["apache2"],
   }
 
+  exec { "a2enmod rewrite":
+    command => "/usr/sbin/a2enmod rewrite",
+    notify => Service["apache2"],
+    require => Package["apache2"],
+  }
+
   service { "apache2":
     ensure => "running",
     require => [
