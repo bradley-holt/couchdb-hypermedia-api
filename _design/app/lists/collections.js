@@ -9,7 +9,7 @@ function(head, req) {
         });
         var collections = {
             "_links": {
-                "self": { "href": "/api" },
+                "self": { "href": "/api/" },
                 "item": []
             },
             "title": "Collections"
