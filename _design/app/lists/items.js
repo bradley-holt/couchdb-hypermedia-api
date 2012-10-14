@@ -21,6 +21,5 @@ function(head, req) {
             }
         }
         send(JSON.stringify(resource));
-        send("\n");
     });
 }

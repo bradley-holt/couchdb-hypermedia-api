@@ -6,7 +6,7 @@ function(doc, req) {
                 "Content-Type": "application/hal+json",
                 "Vary": "Accept"
             },
-            "body": JSON.stringify(doc.resource) + "\n"
+            "body": JSON.stringify(doc.resource)
         };
     });
 }

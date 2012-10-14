@@ -22,6 +22,5 @@ function(head, req) {
             });
         }
         send(JSON.stringify(collections));
-        send("\n");
     });
 }
