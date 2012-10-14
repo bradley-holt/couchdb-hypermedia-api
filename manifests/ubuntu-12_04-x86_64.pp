@@ -23,6 +23,16 @@ class ubuntu-12_04-x86_64 {
     require => Exec["apt-get update"],
   }
 
+  file { "/etc/couchdb/local.ini":
+    ensure => "file",
+    owner => "root",
+    group => "root",
+    mode => "0664",
+    source => "/vagrant/manifests/etc/couchdb/local.ini",
+    notify => Service["couchdb"],
+    require => Package["couchdb"],
+  }
+
   service { "couchdb":
     ensure => "running",
     require => Package["couchdb"],
