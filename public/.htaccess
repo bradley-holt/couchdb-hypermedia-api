@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^api http://localhost:5984/api/_design/app/_rewrite/api [P]
+RewriteRule ^api/(.*) http://localhost:5984/api/_design/app/_rewrite/api/$1 [P]
