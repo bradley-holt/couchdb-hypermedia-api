@@ -8,6 +8,11 @@ This is the source code for a proof of concept Hypermedia API built in CouchDB.
 
 This application is licensed under the New BSD License.
 
+## Disclaimer
+
+This application is written as a proof of concept. The overall design is fairly 
+simplistic, with much room for improvement. Use at your own risk!
+
 ## Developing
 
 Development of this application is done using [VirtualBox](https://www.virtualbox.org/) 
